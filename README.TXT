@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
+Compare ArrayList and LinkedList by storing identical information 
+in each type of list, calling the same methods on each list, and tracking
+the amount of time it take for each method to run.
 ------------------------------------------------------------------------
 
 PROJECT TITLE:
