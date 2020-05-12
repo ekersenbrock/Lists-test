@@ -15,10 +15,10 @@ import java.util.Iterator;
 public class Lists
 {
     // Each type of list to test
-    // Condier making a seperate class for each type of list and an interface
-    // or superclass that they all extend/implement from.
     private List<Integer> arrayList;
     private List<Integer> linkedList;
+    // A seperate list to hold the lists to be tested.
+    private List<List> allLists;
     
     // Random number generator to fill each list.
     private Random rando = new Random(1234);
@@ -34,10 +34,16 @@ public class Lists
         arrayList = new ArrayList<>();
         linkedList = new LinkedList<>();
         this.listSize = listSize;
+        allLists = new ArrayList<>();
+        allLists.add(arrayList);
+        allLists.add(linkedList);
     }
     
+    /**
+     * Constructor with a default list size.
+     */
     public Lists(){
-        this(1000);
+        this(10000);
     }
     
     /**
@@ -68,8 +74,9 @@ public class Lists
      * comparison.
      */
     public void testAddForLists(){
-        testAdd(arrayList);
-        testAdd(linkedList);
+        for(List<Integer> list : allLists){
+            testAdd(list);
+        }
     }
     
     /**
@@ -94,8 +101,9 @@ public class Lists
      * comparison.
      */
     public void testGetForLists(){
-        testGet(arrayList);
-        testGet(linkedList);
+        for(List<Integer> list : allLists){
+            testGet(list);
+        }
     }
     
     /**
@@ -125,8 +133,9 @@ public class Lists
      * comparison.
      */
     public void testRemoveOddForLists(){
-        testRemoveOdd(arrayList);
-        testRemoveOdd(linkedList);
+        for(List<Integer> list : allLists){
+            testRemoveOdd(list);
+        }
     }
     
     public void print(){
@@ -135,7 +144,15 @@ public class Lists
     }
     
     public void clearLists(){
-        arrayList.clear();
-        linkedList.clear();
+        for(List<Integer> list : allLists){
+            list.clear();
+        }
+    }
+    
+    public static void main(String[] args){
+        Lists test = new Lists();
+        test.testAddForLists();
+        test.testGetForLists();
+        test.testRemoveOddForLists();
     }
 }
